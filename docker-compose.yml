@@ -1,0 +1,17 @@
+version: "3"
+services:
+  syncplay-server:
+    image: ninetaillabs/syncplay-server
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8999:8999"
+    command: --motd-file=/app/motd.txt
+    volumes:
+      - ./motd.txt:/app/motd.txt
+  motd-updater:
+    build: ./motd-updater
+    volumes:
+      - ./motd.txt:/app/motd.txt

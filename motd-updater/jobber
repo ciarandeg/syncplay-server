@@ -1,0 +1,6 @@
+version: 1.4
+
+jobs:
+  UpdateMOTD:
+    cmd: /update_motd.sh
+    time: 0 0 *
